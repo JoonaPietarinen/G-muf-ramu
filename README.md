@@ -2,6 +2,8 @@
 
 Sovellus ei ainakaan vielä ole testattavissa fly.io osoitteessa
 
+en jostain syystä saanut toimimaan toisella linux laitteella. ainoa ero oli ubuntu versio
+
 Tilanne tällä hetkellä:
 
 Sovellus käynnistetään esimerkiksi Terminalilla Geemufooramu/ rootista komennolla flask run. Tämän jälkeen saat osoitteen josta pääset selaimella itse sovellukseen.<br/>
