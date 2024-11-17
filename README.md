@@ -1,5 +1,7 @@
 # Geemufooramu <sub><sub>(GameForum, japanese)
 
+Sovellus löytyy myös pakatussa .zip tiedostossa
+
 Tilanne tällä hetkellä:
 
 Sovellus käynnistetään esimerkiksi Terminalilla Geemufooramu/ rootista komennolla flask run. Tämän jälkeen saat osoitteen josta pääset selaimella itse sovellukseen.<br/>
