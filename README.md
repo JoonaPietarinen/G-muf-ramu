@@ -1,5 +1,6 @@
 # Geemufooramu <sub><sub>(GameForum, japanese)
 
+Sovellus ei ainakaan vielä ole testattavissa fly.io osoitteessa
 
 Tilanne tällä hetkellä:
 
