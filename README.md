@@ -1,6 +1,5 @@
 # Geemufooramu <sub><sub>(GameForum, japanese)
 
-Sovellus löytyy myös pakatussa .zip tiedostossa
 
 Tilanne tällä hetkellä:
 
