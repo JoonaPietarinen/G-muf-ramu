@@ -1,0 +1,152 @@
+from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask_sqlalchemy import SQLAlchemy
+from models import db
+from models.models import User, Area, Thread, Message
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://forumuser:secure_password@localhost/forumdb'
+app.config['SECRET_KEY'] = 'your_secret_key_here'
+
+db.init_app(app)
+
+@app.route('/')
+def base():
+        areas = Area.query.all()
+        return render_template('base.html', areas=areas)
+
+
+@app.route('/discussion')
+def index():
+	areas = Area.query.all()
+	return render_template('index.html', areas=areas)
+
+#---------
+
+app.route('/area/<int:area_id>/threads')
+def area_threads(area_id):
+	area = Area.query.get_or_404(area_id)
+	threads = Thread.query.filter_by(area_id=area_id).all()
+	return render_template('area_threads.html', area=area, threads=threads)
+
+
+
+@app.route('/threads/<int:thread_id>')
+def view_thread(thread_id):
+	thread = Thread.query.get_or_404(thread_id)
+	messages = Message.query.filter_by(thread_id=thread_id).all()
+	return render_template('threads.html', thread=thread, messages=messages)
+
+
+@app.route('/thread/<int:thread_id>')
+def view_messages(thread_id):
+	thread = Thread.query.get_or_404(thread_id)
+	messages = Message.query.filter_by(thread_id=thread_id).all()
+	return render_template('messages.html', thread=thread, messages=messages)
+
+
+@app.route('/area/<int:area_id>/new_thread', methods=['GET', 'POST'])
+def new_thread(area_id):
+	if request.method == 'POST':
+		title = request.form['title']
+		content = request.form['content']
+
+		new_thread = Thread(title=title, area_id=area_id)
+		db.session.add(new_thread)
+		db.session.commit()
+
+		first_message = Message(content=content, thread_id=new_thread.id, user_id=session.get('user_id'))
+		db.session.add(first_message)
+		db.session.commit()
+
+		flash('New thread created successfully!', 'success')
+		return redirect(url_for('view_thread', thread_id=new_thread.id))
+
+	return render_template('new_thread.html', area_id=area_id)
+
+
+@app.route('/create_message/<int:thread_id>', methods=['POST'])
+def create_message(thread_id):
+	if 'user_id' not in session:
+		flash('You must be logged in to post a message.', 'error')
+		return redirect(url_for('login'))
+
+	content = request.form.get('content')
+	if not content:
+		flash('Message content cannot be empty.', 'error')
+		return redirect(url_for('view_thread', thread_id=thread_id))
+
+	new_message = Message(
+		content=content,
+		thread_id=thread_id,
+		user_id=session['user_id']
+	)
+
+	db.session.add(new_message)
+	db.session.commit()
+
+	flash('Message posted successfully.', 'success')
+	return redirect(url_for('view_thread', thread_id=thread_id))
+
+#//////////
+
+
+@app.route('/add_user', methods=['GET', 'POST'])
+def add_user():
+	if request.method=='POST':
+		username = request.form['username']
+		password = request.form['password']
+
+		new_user = User(username=username, password=password)
+		db.session.add(new_user)
+		db.session.commit()
+
+		flash('User added successfully!', 'success')
+		return redirect(url_for('index'))
+
+	return render_template('add_user.html')
+
+
+
+
+#-------------------
+
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+		user = User.query.filter_by(username=username).first()
+
+		if user and user.password == password:
+			session['user_id'] = user.id
+			session['username'] = user.username
+			flash('You are now logged in', 'success')
+			return redirect(url_for('index'))
+		else:
+			flash('Invalid credentials', 'error')
+
+	return render_template('login.html')
+
+
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+        return 'Register page, ei valmis'
+
+
+
+if __name__ == '__main__':
+	with app.app_context():
+		db.create_all()
+		#if not Area.query.first():
+			#db.session.add(Area(name="General Discussion")) 
+			#db.session.add(Area(name="Game Tips")) 
+			#db.session.add(Area(name="Bug Reports")) 
+			#db.session.commit()
+
+	app.run(debug=True)
