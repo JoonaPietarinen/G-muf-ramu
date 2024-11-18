@@ -15,7 +15,12 @@ Jos et pääse esim kirjautumaan tai luomaan käyttäjää, voit navigoida näih
 
 ##ASENNUS
 
-Kloonaa tämä repositorio omalle koneellesi ja siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
+Kloonaa tämä repositorio omalle koneellesi.
+```
+$ git clone git@github.com:JoonaPietarinen/Geemufooramu
+$ cd GeemuFooramu
+```
+siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
 ```
 DATABASE_URL=<tietokannan-paikallinen-osoite>
 SECRET_KEY=<salainen-avain>
