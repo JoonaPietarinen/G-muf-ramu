@@ -17,7 +17,7 @@ Jos et pääse esim kirjautumaan tai luomaan käyttäjää, voit navigoida näih
 
 Kloonaa tämä repositorio omalle koneellesi.
 ```
-$ git clone git@github.com:JoonaPietarinen/Geemufooramu
+$ git clone https://github.com/JoonaPietarinen/Geemufooramu
 $ cd GeemuFooramu
 ```
 siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
