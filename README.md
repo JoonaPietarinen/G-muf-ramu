@@ -13,8 +13,28 @@ Sovellus käynnistetään esimerkiksi Terminalilla Geemufooramu/ rootista komenn
 Jos et pääse esim kirjautumaan tai luomaan käyttäjää, voit navigoida näihin esim lisäämällä osoitteeseen /login tai /get_user.
 
 
+##ASENNUS
 
-
+Kloonaa tämä repositorio omalle koneellesi.
+```
+$ git clone https://github.com/JoonaPietarinen/Geemufooramu
+$ cd GeemuFooramu
+```
+siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
+```
+DATABASE_URL=<tietokannan-paikallinen-osoite>
+SECRET_KEY=<salainen-avain>
+```
+Seuraavaksi aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r ./requirements.txt
+```
+Nyt voit käynnistää sovelluksen komennolla
+```
+$ flask run
+```
 IDEA:
 
 Pelikeskustelusovellus <br/>
