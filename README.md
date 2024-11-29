@@ -17,8 +17,8 @@ Jos et pääse esim kirjautumaan tai luomaan käyttäjää, voit navigoida näih
 
 Kloonaa tämä repositorio omalle koneellesi.
 ```
-$ git clone https://github.com/JoonaPietarinen/Geemufooramu
-$ cd GeemuFooramu
+git clone https://github.com/JoonaPietarinen/Geemufooramu
+cd GeemuFooramu
 ```
 siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
 ```
@@ -27,13 +27,13 @@ SECRET_KEY=<salainen-avain>
 ```
 Seuraavaksi aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla
 ```
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip install -r ./requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r ./requirements.txt
 ```
 Määritä vielä tietokannan skeema komennolla
 ```
-$ psql < schema.sql
+psql < schema.sql
 ```
 Luo ensimmäiset ketjut ja viestit komennolla
 ```
@@ -42,7 +42,7 @@ psql < test1.sql
 
 Nyt voit käynnistää sovelluksen komennolla
 ```
-$ flask run
+flask run
 ```
 IDEA:
 
