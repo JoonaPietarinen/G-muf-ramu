@@ -16,7 +16,7 @@ Jos olet kirjautunut sis채채n, voit lis채t채 uusia ketjuja alueille tai viestej�
 
 
 
-##ASENNUS
+## ASENNUS
 
 Kloonaa t채m채 repositorio omalle koneellesi.
 ```
