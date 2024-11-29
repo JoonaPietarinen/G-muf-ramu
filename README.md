@@ -11,7 +11,7 @@ Tilanne tällä hetkellä:
 
 
 
-Aloitus sivulta pääset rekisteröitymään, kirjautumaan tai etusivulle, josta voit valita alueen, jossa näet jo julkaistut ketjut ja voit julkaista uusia ketjuja.<br/>
+Aloitus sivulta pääset rekisteröitymään, kirjautumaan sisään tai ulos ja etusivulle, josta voit valita alueen, jossa näet jo julkaistut ketjut ja voit julkaista uusia ketjuja.<br/>
 Jos olet kirjautunut sisään, voit lisätä uusia ketjuja alueille tai viestejä ketjuihin. <br/>
 
 
