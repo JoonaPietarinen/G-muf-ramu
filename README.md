@@ -2,15 +2,18 @@
 
 Sovellus ei ainakaan vielä ole testattavissa fly.io osoitteessa
 
-en jostain syystä saanut toimimaan toisella linux laitteella. ainoa ero oli ubuntu versio
 
 Tilanne tällä hetkellä:
+- [x]Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen. <br/>
+- [x]Käyttäjä näkee sovelluksen "etusivulla" listan alueista <br/>
+- [x]Käyttäjä voi luoda alueelle uuden ketjun antamalla ketjun otsikon ja aloitusviestin sisällön. <br/>
+- [x]Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun. <br/>
 
-Sovellus käynnistetään esimerkiksi Terminalilla Geemufooramu/ rootista komennolla flask run. Tämän jälkeen saat osoitteen josta pääset selaimella itse sovellukseen.<br/>
-    Etusivulla voit joko kirjautua tai rekisteröityä, jonka jälkeen pääset "Discussion areas" sivulle <sub>(pääset tänne myös lisäämällä url osoitteeseen /discussion, mutta julkaiseminen vaatii kirjautumisen)</sub>, josta voit valita alueen, johon haluat julkaista uuden ketjun. Julkaistuihin ketjuihin pääsee tällä hetkellä vain lisäämällä url osoitteeseen /thread/x , jossa x on halutun ketjun numero.<br/>
-    Jos olet kirjautunut sisään, voit lisätä uusia ketjuja tai viestejä ketjuihin. <br/>
 
-Jos et pääse esim kirjautumaan tai luomaan käyttäjää, voit navigoida näihin esim lisäämällä osoitteeseen /login tai /get_user.
+
+Aloitus sivulta pääset rekisteröitymään, kirjautumaan tai etusivulle, josta voit valita alueen, jossa näet jo julkaistut ketjut ja voit julkaista uusia ketjuja.<br/>
+Jos olet kirjautunut sisään, voit lisätä uusia ketjuja alueille tai viestejä ketjuihin. <br/>
+
 
 
 ##ASENNUS
