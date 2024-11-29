@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Forum</title>
-</head>
-<body>
-	<h1>Discussion Areas</h1>
-	<ul>
-		{% for area in areas %}
-		<li>
-			<a href="{{ url_for('new_thread', area_id=area.id) }}">{{ area.name }}</a>
-		</li>
-		{% else %} 
-		<p>No discussion areas available. Add some areas to get started!</p>
-		{% endfor %}
-	</ul>
-</body>
-</html>
+<!-- index.html -->
+<h1>Discussion Areas</h1>
+{% if areas %}
+    {% for area in areas %}
+        <a href="{{ url_for('view_threads', area_id=area[0]) }}">{{ area[1] }}</a><br>
+    {% endfor %}
+{% else %}
+    <p>No discussion areas available. Add some areas to get started!</p>
+{% endif %}

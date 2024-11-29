@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Threads</title>
-</head>
-<body>
-	<h1>Thread: {{ thread.title }}</h1>
-
-	<ul>
-		{% for message in messages %}
-		<li>
-			<strong>{{ message.user.username }}</strong>: {{ message.content }}
-			<small>{{ message.created_at }}</small>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<form method="POST" action="{{ url_for('create_message', thread_id=thread.id) }}">
-		<textarea name="content" placeholder="Write your message here" required></textarea>
-		<button type="submit">Post</button>
-	</form>
-
-</body>
-</html>
+<!-- threads.html -->
+<h1>Discussion Threads</h1>
+{% for thread in threads %}
+    <a href="{{ url_for('view_messages', thread_id=thread[0]) }}">{{ thread[1] }}</a><br>
+{% else %}
+    <p>No threads available in this area.</p>
+{% endfor %}
+<a href="{{ url_for('new_thread', area_id=area_id) }}">Create a new thread</a>
