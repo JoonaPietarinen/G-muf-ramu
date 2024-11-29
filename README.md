@@ -47,7 +47,7 @@ Nyt voit käynnistää sovelluksen komennolla
 ```
 flask run
 ```
-IDEA:
+### IDEA
 
 Pelikeskustelusovellus <br/>
 Sovelluksessa näkyy keskustelualueita, joista jokaisella on tietty aihe (tietty peli, softa yms.). Alueilla on keskusteluketjuja, jotka muodostuvat viesteistä. Jokainen käyttäjä on peruskäyttäjä tai ylläpitäjä.
