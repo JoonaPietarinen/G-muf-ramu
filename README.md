@@ -22,7 +22,7 @@ $ cd GeemuFooramu
 ```
 siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
 ```
-DATABASE_URL=<tietokannan-paikallinen-osoite>
+DATABASE_URL=postgresql://forumuser:secure_password@localhost/forumdb
 SECRET_KEY=<salainen-avain>
 ```
 Seuraavaksi aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla
@@ -35,6 +35,11 @@ Määritä vielä tietokannan skeema komennolla
 ```
 $ psql < schema.sql
 ```
+Luo ensimmäiset ketjut ja viestit komennolla
+```
+psql < test1.sql
+```
+
 Nyt voit käynnistää sovelluksen komennolla
 ```
 $ flask run
@@ -46,11 +51,11 @@ Sovelluksessa näkyy keskustelualueita, joista jokaisella on tietty aihe (tietty
 
 Sovelluksen ominaisuuksia:
 
-Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen. <br/> 
-Käyttäjä näkee sovelluksen etusivulla listan alueista sekä jokaisen alueen ketjujen ja viestien määrän ja viimeksi lähetetyn viestin ajankohdan. <br/>
-Käyttäjä voi luoda alueelle uuden ketjun antamalla ketjun otsikon ja aloitusviestin sisällön. <br/>
-Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun. <br/>
-Käyttäjä voi muokata luomansa ketjun otsikkoa sekä lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa ketjun tai viestin. <br/>
-Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana. <br/>
-Ylläpitäjä voi lisätä ja poistaa keskustelualueita. <br/>
-Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle. <br/>
+- [x]Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen. <br/> 
+- [ ]Käyttäjä näkee sovelluksen etusivulla listan alueista sekä jokaisen alueen ketjujen ja viestien määrän ja viimeksi lähetetyn viestin ajankohdan. <br/>
+- [x]Käyttäjä voi luoda alueelle uuden ketjun antamalla ketjun otsikon ja aloitusviestin sisällön. <br/>
+- [x]Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun. <br/>
+- [ ]Käyttäjä voi muokata luomansa ketjun otsikkoa sekä lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa ketjun tai viestin. <br/>
+- [ ]Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana. <br/>
+- [ ]Ylläpitäjä voi lisätä ja poistaa keskustelualueita. <br/>
+- [ ]Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle. <br/>
