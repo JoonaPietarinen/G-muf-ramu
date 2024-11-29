@@ -22,7 +22,7 @@ $ cd GeemuFooramu
 ```
 siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
 ```
-DATABASE_URL=postgresql://<new-db-name>
+DATABASE_URL=postgresql:///<new-db-name>
 SECRET_KEY=<salainen-avain>
 ```
 Seuraavaksi aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla
