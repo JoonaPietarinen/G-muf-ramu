@@ -1,7 +1,8 @@
 <!-- new_message.html -->
 <h1>Add New Message</h1>
-<form action="{{ url_for('new_message', thread_id=thread_id) }}" method="post">
+<form action="{{ url_for('discussion.new_message', thread_id=thread_id) }}" method="post">
     <label for="content">Message:</label>
     <textarea name="content" id="content" required></textarea>
     <button type="submit">Add Message</button>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 </form>

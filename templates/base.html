@@ -1,21 +1,19 @@
 <!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
+{% extends "etusivu.html" %}
 <head>
     <meta charset="UTF-8">
     <title>{{ title if title else "GeemuFooramu" }}</title>
 </head>
 <body>
+    {% block title %}Test{% endblock %}
+    {% block content %}
     <nav>
-        <a href="{{ url_for('index') }}">Etusivulle</a>
-        {% if session.get('username') %}
-            <p>Kirjautunut: {{ session['username'] }}</p>
-            <a href="{{ url_for('logout') }}">Kirjaudu ulos</a>
-        {% else %}
-            <a href="{{ url_for('login') }}">Kirjaudu sisään</a>
-            <a href="{{ url_for('add_user') }}">Rekisteröidy</a>
-        {% endif %}
+        
+        <a href="{{ url_for('discussion.index') }}">Discussion areas</a>
     </nav>
-    {% block content %}{% endblock %}
+    
 </body>
 </html>
+{% endblock %}

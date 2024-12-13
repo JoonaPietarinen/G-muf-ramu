@@ -1,9 +1,16 @@
 <!-- messages.html -->
+{% extends "etusivu.html" %}
+{% block title %}m{% endblock %}
+{% block content %}
+
 <h1>{{ thread_title }}</h1>
 {% for message in messages %}
-    <p>{{ message[0] }} - {{ message[1] }} at {{ message[2] }}</p>
+    <p>{{ message[0] }} - <a href="{{ url_for('profile.view_profile', user_id=message[3]  ) }}">{{ message[1] }}</a> at {{ message[2] }}</p>
 {% endfor %}
-<form action="{{ url_for('new_message', thread_id=thread_id) }}" method="post">
+<form action="{{ url_for('discussion.new_message', thread_id=thread_id) }}" method="post">
     <textarea name="content"></textarea>
     <button type="submit">Add Message</button>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 </form>
+{% endblock %}
+

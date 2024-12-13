@@ -1,9 +1,16 @@
 <!-- add_user.html -->
+{% extends "etusivu.html" %}
+{% block title %}m{% endblock %}
+{% block content %}
+
+
 <h1>Add User</h1>
-<form action="{{ url_for('add_user') }}" method="post">
+<form action="{{ url_for('user.add_user') }}" method="post">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required>
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" required>
     <button type="submit">Add User</button>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 </form>
+{% endblock %}

@@ -1,9 +1,17 @@
 <!-- index.html -->
+{% extends "etusivu.html" %}
+{% block title %}FP{% endblock %}
+{% block content %}
+
 <h1>Discussion Areas</h1>
-{% if areas %}
+<ul>
     {% for area in areas %}
-        <a href="{{ url_for('view_threads', area_id=area[0]) }}">{{ area[1] }}</a><br>
+    <li>
+        <a href="{{ url_for('discussion.view_threads', area_id=area[0]) }}">{{ area[1] }}</a>
+        - Threads: {{ area[2] }}
+        - Messages: {{ area[3] }}
+    </li>
     {% endfor %}
-{% else %}
-    <p>No discussion areas available. Add some areas to get started!</p>
-{% endif %}
+</ul>
+{% endblock %}
+

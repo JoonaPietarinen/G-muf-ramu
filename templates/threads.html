@@ -1,8 +1,19 @@
 <!-- threads.html -->
+{% extends "etusivu.html" %}
+{% block title %}dt{% endblock %}
+{% block content %}
+
+
 <h1>Discussion Threads</h1>
-{% for thread in threads %}
-    <a href="{{ url_for('view_messages', thread_id=thread[0]) }}">{{ thread[1] }}</a><br>
-{% else %}
-    <p>No threads available in this area.</p>
-{% endfor %}
-<a href="{{ url_for('new_thread', area_id=area_id) }}">Create a new thread</a>
+<ul>
+    {% for thread in threads %}
+    <li> 
+        <a href="{{ url_for('discussion.view_messages', thread_id=thread[0]) }}">{{ thread[1] }}</a><br>
+        - Last message: {{ thread[2] or 'No messages yet' }}
+    {% else %}
+        <p>No threads available in this area.</p>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('discussion.new_thread', area_id=area_id) }}">Create a new thread</a>
+{% endblock %}

@@ -2,7 +2,19 @@ CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(80) UNIQUE NOT NULL,
 	password VARCHAR(120) NOT NULL,
-	is_admin BOOLEAN DEFAULT FALSE
+	is_admin BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE admins (
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE profiles (
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    bio TEXT,
+    profile_image TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
 );
 
 
