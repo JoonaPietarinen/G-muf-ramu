@@ -15,7 +15,7 @@ Sovelluksen ominaisuuksia:
 - []Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana. <br/>
 - [x]Ylläpitäjä voi poistaa muiden viestejä. <br/>
 - []Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle. <br/>
-
+- [x] Käyttäjä voi muokata profiiliaan, ja katsella muiden profiileja
 
 
 ## ASENNUS
