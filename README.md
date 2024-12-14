@@ -22,8 +22,8 @@ Sovelluksen ominaisuuksia:
 
 Kloonaa tämä repositorio omalle koneellesi.
 ```
-git clone https://github.com/JoonaPietarinen/Geemufooramu
-cd GeemuFooramu
+$ git clone https://github.com/JoonaPietarinen/Geemufooramu
+$ cd GeemuFooramu
 ```
 siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
 ```
@@ -36,15 +36,25 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r ./requirements.txt
 ```
-Määritä vielä tietokannan skeema komennolla
+Luo tietokanta ja määritä tietokannan skeema komennolla
 ```
-$ psql < schema.sql
+$ psql
+user=# CREATE DATABASE <new-db-name>;
+user=# \q
+$ psql -d <new-db-name> < schema.sql
 ```
 Tämän jälkeen luo testi käyttäjät sekä alueet
 ```
-psql < test1.sql
+$ psql -d <new-db-name> < test1.sql
 ```
 Nyt voit käynnistää sovelluksen komennolla
 ```
 $ flask run
 ```
+
+## KÄYTTÄJIÄ
+Testi käyttäjiä ovat:
+| username | password | role  |
+|----------|----------|-------|
+| admin    | admin    | admin | 
+| testuser | password | user  |
