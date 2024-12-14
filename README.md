@@ -7,14 +7,14 @@ Sovelluksessa näkyy keskustelualueita, joista jokaisella on tietty aihe (tietty
 
 Sovelluksen ominaisuuksia:
 
-- [x]Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen. <br/> 
-- [x]Käyttäjä näkee sovelluksen etusivulla listan alueista sekä jokaisen alueen ketjujen ja viestien määrän ja viimeksi lähetetyn viestin ajankohdan. <br/>
-- [x]Käyttäjä voi luoda alueelle uuden ketjun antamalla ketjun otsikon ja aloitusviestin sisällön. <br/>
-- [x]Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun. <br/>
-- [x]Käyttäjä voi muokata lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa viestin. <br/>
-- []Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana. <br/>
-- [x]Ylläpitäjä voi poistaa muiden viestejä. <br/>
-- []Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle. <br/>
+- [x] Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen. <br/> 
+- [x] Käyttäjä näkee sovelluksen etusivulla listan alueista sekä jokaisen alueen ketjujen ja viestien määrän ja viimeksi lähetetyn viestin ajankohdan. <br/>
+- [x] Käyttäjä voi luoda alueelle uuden ketjun antamalla ketjun otsikon ja aloitusviestin sisällön. <br/>
+- [x] Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun. <br/>
+- [x] Käyttäjä voi muokata lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa viestin. <br/>
+- [] Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana. <br/>
+- [x] Ylläpitäjä voi poistaa muiden viestejä. <br/>
+- [] Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle. <br/>
 - [x] Käyttäjä voi muokata profiiliaan, ja katsella muiden profiileja
 
 
