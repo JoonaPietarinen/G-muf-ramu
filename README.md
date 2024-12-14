@@ -18,7 +18,7 @@ Sovelluksen ominaisuuksia:
 
 
 
-##ASENNUS
+## ASENNUS
 
 Kloonaa tämä repositorio omalle koneellesi.
 ```
