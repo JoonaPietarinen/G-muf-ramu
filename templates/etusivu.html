@@ -1,15 +1,25 @@
 <!doctype html>
-<title>ゲームフォーラム - {% block title %}{% endblock %}</title>
-<h1>ゲームフォーラム</h1>
-<a href="/">Front Page</a>
-{% if session.get('username') %}
-    <a href="{{ url_for('profile.view_profile', user_id=session['user_id']) }}">Profile</a>
-    <p>Logged in as: {{ session['username'] }}</p>
-    <a href="{{ url_for('auth.logout') }}">Logout</a>
-{% else %}
-    <a href="{{ url_for('auth.login') }}">Login</a>
-    <a href="{{ url_for('user.add_user') }}">Register</a>
-{% endif %}
-<hr>
-{% block content %}{% endblock %}
-<hr>
+<link rel="stylesheet" href="/static/css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <title>ゲームフォーラム - {% block title %}{% endblock %}</title>
+    <div class="header">
+        <h1>ゲームフォーラム</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Front Page</a></li>
+            {% if session.get('username') %}
+                     <li><a href="{{ url_for('profile.view_profile', user_id=session['user_id']) }}">Profile</a></li>
+                <p>Logged in as: {{ session['username'] }}</p>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                <li><a href="{{ url_for('user.add_user') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+    <hr>
+</body>

@@ -2,16 +2,17 @@
 {% extends "etusivu.html" %}
 {% block title %}FP{% endblock %}
 {% block content %}
-
-<h1>Discussion Areas</h1>
-<ul>
-    {% for area in areas %}
-    <li>
-        <a href="{{ url_for('discussion.view_threads', area_id=area[0]) }}">{{ area[1] }}</a>
-        - Threads: {{ area[2] }}
-        - Messages: {{ area[3] }}
-    </li>
-    {% endfor %}
-</ul>
+<body>
+    <h1>Discussion Areas</h1>
+    <ul>
+        {% for area in areas %}
+        <li>
+            <a href="{{ url_for('discussion.view_threads', area_id=area[0]) }}">{{ area[1] }}</a>
+            - Threads: {{ area[2] }}
+            - Messages: {{ area[3] }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
 {% endblock %}
 

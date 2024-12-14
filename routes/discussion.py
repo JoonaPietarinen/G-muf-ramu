@@ -86,9 +86,12 @@ def new_thread(area_id):
 def new_message(thread_id):
     if 'user_id' not in session:
         flash('You must be logged in to post a message.', 'error')
-        return redirect('/login')
+        return redirect(url_for('auth.login'))
 
-    content = request.form['content']
+    content = request.form.get('content', '').strip()
+    if not content:
+        flash('Message content cannot be empty.', 'error')
+        return redirect(url_for('discussion.view_messages', thread_id=thread_id))
     conn = get_db_connection()
     cur = conn.cursor()
     try:

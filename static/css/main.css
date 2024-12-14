@@ -1,0 +1,96 @@
+body {
+    margin: auto;
+    max-width: 45em;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: beige;
+}
+
+nav li {
+    display: inline-block;
+    padding: .5em;
+    background: pink;
+    border-radius: .5em;
+    margin: .2em;
+}
+
+.header {
+    background: darkred;
+    font-weight: bold;
+    padding: 2em 1em;
+    font-size: 2em;
+    border-radius: .5em;
+    margin-top: .5em;
+    text-align: center;
+}
+
+form {
+    display: block;
+    padding: .5em;
+    background: blanchedalmond;
+    border-radius: .5em;
+    display: grid;
+    max-width: auto;
+    grid-template-columns: auto auto;
+    grid-row-gap: .3em;
+}
+
+nav ul {
+    padding: 0;
+    margin: .5em;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+
+.content {
+   background: white;
+   padding: 1.5em 2em;
+   border-radius: .5em;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #000;
+}
+
+nav li:hover {
+    background-color: rgb(197, 0, 255);
+}
+
+form #password {
+    grid-column-start: 2;
+    padding:5px;
+    text-align: left;
+    width: auto;
+    margin: auto 0 auto -15.5em;
+}
+
+form #username {
+    grid-column-start: 2;
+    padding:5px;
+    text-align: left;
+    width: auto;
+    margin: auto 0 auto -15.5em;
+}
+
+form #profile_image {
+    grid-column-start: 2;
+    padding:5px;
+    border: none;
+    text-align: left;
+    width: 15em;
+    margin: auto 0 auto 5.5em;
+}
+
+form #bio {
+    grid-column-start: 2;
+    padding:5px;
+    border.radius: .5;
+    text-align: left;
+    width: 10em;
+    margin: auto 0 auto 0em;
+}
+
