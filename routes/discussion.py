@@ -121,7 +121,7 @@ def view_messages(thread_id):
         return redirect(url_for('discussion.index'))
 
     cur.execute('''
-        SELECT m.content, u.username, m.created_at, u.id AS user_id
+        SELECT m.content, u.username, m.created_at, u.id AS user_id, m.id AS message_id
         FROM messages m
         JOIN users u ON m.user_id = u.id
         WHERE m.thread_id = %s
@@ -137,3 +137,83 @@ def view_messages(thread_id):
         thread_title=thread[0])
 
 
+@bp.route('/thread/<int:thread_id>/message/<int:message_id>/delete', methods=['POST'])
+def delete_message(thread_id, message_id):
+    if 'user_id' not in session:
+        flash('You must be logged in to delete messages.', 'error')
+        return redirect(url_for('auth.login'))
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+
+    cur.execute('''
+        SELECT user_id FROM messages WHERE id = %s;
+    ''', (message_id,))
+    message = cur.fetchone()
+
+    if not message:
+        flash('Message not found.', 'error')
+        conn.close()
+        return redirect(url_for('discussion.view_messages', thread_id=thread_id))
+
+    user_id = session['user_id']
+    is_admin = session.get('is_admin', False)
+    if message[0] == user_id or is_admin:
+        try:
+            cur.execute('DELETE FROM messages WHERE id = %s;', (message_id,))
+            conn.commit()
+            flash('Message deleted successfully.', 'success')
+        except Exception as e:
+            conn.rollback()
+            flash(f'Error deleting message: {str(e)}', 'error')
+    else:
+        flash('You are not authorized to delete this message.', 'error')
+
+    cur.close()
+    conn.close()
+    return redirect(url_for('discussion.view_messages', thread_id=thread_id))
+
+
+@bp.route('/thread/<int:thread_id>/message/<int:message_id>/edit', methods=['GET', 'POST'])
+def edit_message(thread_id, message_id):
+    if 'user_id' not in session:
+        flash('You must be logged in to edit messages.', 'error')
+        return redirect(url_for('auth.login'))
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('''
+        SELECT content, user_id FROM messages WHERE id = %s;
+    ''', (message_id,))
+    message = cur.fetchone()
+
+    if not message:
+        flash('Message not found.', 'error')
+        conn.close()
+        return redirect(url_for('discussion.view_messages', thread_id=thread_id))
+
+    if message[1] != session['user_id']:
+        flash('You are not authorized to edit this message.', 'error')
+        conn.close()
+        return redirect(url_for('discussion.view_messages', thread_id=thread_id))
+
+    if request.method == 'POST':
+        new_content = request.form['content']
+        try:
+            cur.execute('''
+                UPDATE messages SET content = %s WHERE id = %s;
+            ''', (new_content, message_id))
+            conn.commit()
+            flash('Message updated successfully.', 'success')
+        except Exception as e:
+            conn.rollback()
+            flash(f'Error updating message: {str(e)}', 'error')
+        finally:
+            cur.close()
+            conn.close()
+        return redirect(url_for('discussion.view_messages', thread_id=thread_id))
+
+    conn.close()
+    return render_template('edit_message.html', message=message[0], thread_id=thread_id, message_id=message_id)

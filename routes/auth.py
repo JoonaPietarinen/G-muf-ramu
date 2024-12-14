@@ -11,7 +11,7 @@ def login():
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('SELECT id, username, password FROM users WHERE username = %s;', (username,))
+        cur.execute('SELECT id, username, password, is_admin FROM users WHERE username = %s;', (username,))
         user = cur.fetchone()
         cur.close()
         conn.close()
@@ -19,8 +19,9 @@ def login():
         if user and user[2] == password:
             session['user_id'] = user[0]
             session['username'] = user[1]
+            session['is_admin'] = user[3]
             flash('Logged in successfully!', 'success')
-            return redirect(url_for('fp.base'))
+            return redirect(url_for('discussion.index'))
         else:
             flash('Invalid credentials.', 'error')
     return render_template('login.html')
@@ -29,4 +30,4 @@ def login():
 def logout():
     session.clear()
     flash('You have been logged out.', 'success')
-    return redirect(url_for('fp.base'))
+    return redirect(url_for('discussion.index'))

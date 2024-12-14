@@ -6,6 +6,13 @@
 <h1>{{ thread_title }}</h1>
 {% for message in messages %}
     <p>{{ message[0] }} - <a href="{{ url_for('profile.view_profile', user_id=message[3]  ) }}">{{ message[1] }}</a> at {{ message[2] }}</p>
+        {% if session.get('is_admin') or message[3] == session.get('user_id') %}
+            <form method="POST" action="{{ url_for('discussion.delete_message', thread_id=thread_id, message_id=message[4]) }}" style="display:inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit">Delete</button>
+            </form>
+            <a href="{{ url_for('discussion.edit_message', thread_id=thread_id, message_id=message[4]) }}">Edit</a>
+        {% endif %}
 {% endfor %}
 <form action="{{ url_for('discussion.new_message', thread_id=thread_id) }}" method="post">
     <textarea name="content"></textarea>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "etusivu.html" %}
+{% block title %}em{% endblock %}
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Message</title>
+</head>
+<body>
+    <h1>Edit Message</h1>
+    <form method="POST" action="{{ url_for('discussion.edit_message', thread_id=thread_id, message_id=message_id) }}">
+        <textarea name="content" rows="5" cols="40" required>{{ message }}</textarea>
+        <button type="submit">Save Changes</button>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </form>
+    <a href="{{ url_for('discussion.view_messages', thread_id=thread_id) }}">Back to Thread</a>
+</body>
+</html>
+{% endblock %}
